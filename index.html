@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KeyNest</title>
+  <meta name="description" content="A tiny Chrome extension with two encrypted vaults, one for you and one for whoever set up the machine. Local. Encrypted. No cloud.">
+  <link rel="icon" href="icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="logo" href="#">
+      <img src="icon.png" alt="" width="32" height="32">
+      <span>Key<b>Nest</b></span>
+    </a>
+    <nav class="nav-links">
+      <a href="#dual">Two vaults</a>
+      <a href="#flow">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#install">Install</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a href="#get" class="btn small primary">Download</a>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero">
+  <svg class="hex-bg" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs>
+      <pattern id="hexPattern" x="0" y="0" width="60" height="52" patternUnits="userSpaceOnUse">
+        <path d="M30 0 L60 15 L60 45 L30 60 L0 45 L0 15 Z" fill="none" stroke="#dbe4f7" stroke-width="0.6"/>
+      </pattern>
+    </defs>
+    <rect width="1200" height="600" fill="url(#hexPattern)"/>
+  </svg>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1>
+        A nest<br>
+        for your <span class="grad">keys</span>.
+      </h1>
+      <p class="sub">
+        Built for personal use, and for IT teams or managers who need to
+        share passwords with people on their team without ever handing over
+        the actual password.
+      </p>
+      <div class="cta-row">
+        <a href="#get" class="btn primary big">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+          </svg>
+          Download for Chrome
+        </a>
+        <a href="#dual" class="btn ghost">See the two-vault flow</a>
+      </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+      <div class="shield">
+        <svg viewBox="0 0 320 340" width="100%" height="100%">
+          <defs>
+            <linearGradient id="hexGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3d7fff"/>
+              <stop offset="100%" stop-color="#0d2464"/>
+            </linearGradient>
+            <linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+            </linearGradient>
+          </defs>
+          <path d="M160 12 L296 82 L296 238 L160 328 L24 238 L24 82 Z"
+                fill="url(#hexGrad)"/>
+          <path d="M160 32 L278 92 L278 228 L160 308 L42 228 L42 92 Z"
+                fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+
+          <g transform="translate(58, 90)">
+            <rect width="90" height="140" rx="12" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+            <text x="45" y="24" text-anchor="middle" fill="rgba(255,255,255,0.7)" font-family="Inter" font-size="9" font-weight="700" letter-spacing="1.5">USER</text>
+            <g transform="translate(30, 40)">
+              <rect x="0" y="12" width="30" height="22" rx="3" fill="#ffffff"/>
+              <path d="M7 12 V7 a8 8 0 0 1 16 0 V12" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+              <circle cx="15" cy="22" r="2" fill="#0d2464"/>
+            </g>
+            <rect x="15" y="90" width="60" height="6" rx="3" fill="rgba(255,255,255,0.35)"/>
+            <rect x="15" y="104" width="42" height="6" rx="3" fill="rgba(255,255,255,0.22)"/>
+            <rect x="15" y="118" width="52" height="6" rx="3" fill="rgba(255,255,255,0.22)"/>
+          </g>
+
+          <g transform="translate(172, 90)">
+            <rect width="90" height="140" rx="12" fill="url(#cardGrad)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+            <text x="45" y="24" text-anchor="middle" fill="#7fb3ff" font-family="Inter" font-size="9" font-weight="700" letter-spacing="1.5">ADMIN</text>
+            <g transform="translate(30, 38)">
+              <path d="M15 2 L28 8 V22 c0 8 -6 14 -13 16 -7 -2 -13 -8 -13 -16 V8 Z" fill="#7fb3ff"/>
+              <path d="M9 15 L13 19 L21 11" fill="none" stroke="#0d2464" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <rect x="15" y="90" width="60" height="6" rx="3" fill="rgba(127,179,255,0.5)"/>
+            <rect x="15" y="104" width="48" height="6" rx="3" fill="rgba(127,179,255,0.3)"/>
+            <rect x="15" y="118" width="55" height="6" rx="3" fill="rgba(127,179,255,0.3)"/>
+          </g>
+
+          <circle cx="160" cy="270" r="8" fill="#ffffff"/>
+          <rect x="157" y="270" width="6" height="14" fill="#ffffff"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="strip">
+  <div class="wrap strip-grid">
+    <div class="stat">
+      <div class="stat-n">2</div>
+      <div class="stat-l">Vaults</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">0</div>
+      <div class="stat-l">Servers</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">AES-256</div>
+      <div class="stat-l">Encryption</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">250<span class="unit">k</span></div>
+      <div class="stat-l">PBKDF2 rounds</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">60<span class="unit">KB</span></div>
+      <div class="stat-l">Total size</div>
+    </div>
+  </div>
+</section>
+
+<!-- DUAL VAULT -->
+<section id="dual" class="section vaults">
+  <div class="wrap">
+    <div class="section-head center">
+      <h2>Two vaults, one extension.</h2>
+      <p class="lead">
+        The main idea: a <b>manager</b> or <b>IT admin</b> saves shared
+        logins that teammates can use, but never see. Everyone still keeps
+        their own <b>personal</b> vault on the same machine, encrypted with
+        their own password.
+      </p>
+    </div>
+
+    <div class="vault-grid">
+      <div class="vault-card user">
+        <div class="vault-head">
+          <div class="vault-badge">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+            </svg>
+          </div>
+          <div>
+            <div class="vault-kicker">Personal</div>
+            <h3>User vault</h3>
+          </div>
+        </div>
+        <p class="vault-desc">
+          What you would expect from a password manager. Yours to add, view,
+          edit, delete.
+        </p>
+        <ul class="vault-list">
+          <li><span class="tick user-tick">●</span> Set by <b>you</b></li>
+          <li><span class="tick user-tick">●</span> Your password to unlock</li>
+          <li><span class="tick user-tick">●</span> Full read and write access</li>
+          <li><span class="tick user-tick">●</span> Auto-locks after idle</li>
+        </ul>
+      </div>
+
+      <div class="vault-vs" aria-hidden="true">
+        <div class="vs-badge">+</div>
+      </div>
+
+      <div class="vault-card admin">
+        <div class="vault-head">
+          <div class="vault-badge admin-badge">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8">
+              <path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/>
+              <path d="M9 12l2 2 4-4"/>
+            </svg>
+          </div>
+          <div>
+            <div class="vault-kicker admin-kicker">Managed</div>
+            <h3>Admin vault</h3>
+          </div>
+        </div>
+        <p class="vault-desc">
+          For a parent, IT admin, or team lead. Sites you set once and let the
+          user sign into, without ever showing them the password.
+        </p>
+        <ul class="vault-list">
+          <li><span class="tick admin-tick">●</span> Set by an <b>admin</b></li>
+          <li><span class="tick admin-tick">●</span> Silent autofill on managed sites</li>
+          <li><span class="tick admin-tick">●</span> Admin password to view or edit</li>
+          <li><span class="tick admin-tick">●</span> User never sees the secret</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="examples">
+      <div class="ex-head">A few places it fits</div>
+      <div class="ex-grid">
+        <div class="ex">
+          <div class="ex-icon">🏢</div>
+          <div class="ex-title">IT team at a company</div>
+          <div class="ex-body">Admin drops the company's SaaS logins into the admin vault. Employees sign in every day without ever seeing the password. When someone leaves, wipe the admin vault, done.</div>
+        </div>
+        <div class="ex">
+          <div class="ex-icon">👥</div>
+          <div class="ex-title">Manager sharing with the team</div>
+          <div class="ex-body">Team lead saves the shared vendor account, the marketing tool, the internal dashboard. Everyone on the team can use them, nobody can copy the password out.</div>
+        </div>
+        <div class="ex">
+          <div class="ex-icon">🏠</div>
+          <div class="ex-title">Family or shared PC</div>
+          <div class="ex-body">Parent puts Netflix, Prime, and Spotify in the admin vault. Kids sign in through the user vault for their own school stuff. Passwords stay with the parent.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SETUP FLOW -->
+<section id="flow" class="section flow-section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>How the two vaults get born.</h2>
+    </div>
+
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-num">01</div>
+        <div class="flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+          </svg>
+        </div>
+        <div class="flow-title">Install</div>
+        <div class="flow-desc">Load unpacked. About a minute.</div>
+      </div>
+
+      <div class="flow-arrow">→</div>
+
+      <div class="flow-step">
+        <div class="flow-num">02</div>
+        <div class="flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M12 2L4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4z"/>
+          </svg>
+        </div>
+        <div class="flow-title">Admin sets admin password</div>
+        <div class="flow-desc">The parent, IT, or owner picks it.</div>
+      </div>
+
+      <div class="flow-arrow">→</div>
+
+      <div class="flow-step">
+        <div class="flow-num">03</div>
+        <div class="flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/>
+          </svg>
+        </div>
+        <div class="flow-title">User sets user password</div>
+        <div class="flow-desc">Has to be a different one. Enforced.</div>
+      </div>
+
+      <div class="flow-arrow">→</div>
+
+      <div class="flow-step">
+        <div class="flow-num">04</div>
+        <div class="flow-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path d="M13 3L4 14h7l-1 7 9-11h-7z"/>
+          </svg>
+        </div>
+        <div class="flow-title">Both vaults live</div>
+        <div class="flow-desc">User unlocks the user tab. Admin entries autofill silently.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="section alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Small tool. Sharp edges.</h2>
+    </div>
+
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+        </div>
+        <h3>End-to-end encrypted</h3>
+        <p>AES-GCM. Key derived on-device.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>
+        </div>
+        <h3>Local storage only</h3>
+        <p>Never leaves your browser.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <h3>Auto-lock timer</h3>
+        <p>Memory wiped. Disk stays encrypted.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 7h16v13H4z"/><path d="M9 7V4h6v3"/></svg>
+        </div>
+        <h3>Export and import</h3>
+        <p>Move vaults between machines.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>
+        </div>
+        <h3>Wipe on demand</h3>
+        <p>Type DELETE, gone forever.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12h16M12 4v16"/></svg>
+        </div>
+        <h3>Zero telemetry</h3>
+        <p>Nothing calls home. Nothing tracks.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALL -->
+<section id="install" class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Installing it takes under a minute.</h2>
+    </div>
+
+    <div class="install-grid">
+      <div class="ins-card"><div class="ins-num">1</div><h3>Unzip it</h3><p>Extract the download anywhere.</p></div>
+      <div class="ins-card"><div class="ins-num">2</div><h3>Open extensions</h3><p>Go to <code>chrome://extensions</code></p></div>
+      <div class="ins-card"><div class="ins-num">3</div><h3>Developer mode</h3><p>Toggle on, top right corner.</p></div>
+      <div class="ins-card"><div class="ins-num">4</div><h3>Load unpacked</h3><p>Pick the folder. Pin the icon. Done.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section id="get" class="section download-section">
+  <div class="wrap">
+    <div class="download-card">
+      <div class="dl-left">
+        <span class="eyebrow light">Ready when you are</span>
+        <h2>Get KeyNest.</h2>
+        <p>Chromium browsers only. Single file. No installer.</p>
+      </div>
+      <div class="dl-right">
+        <a href="keynest-v1.0.0.zip" class="btn primary big" download>
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M12 3v12m0 0l-4-4m4 4l4-4"/><path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+          </svg>
+          KeyNest v1.0.0
+        </a>
+        <div class="dl-meta">170 KB · Manifest V3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section alt">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Short answers.</h2>
+    </div>
+    <div class="qa-grid">
+      <div class="qa"><h3>Forgot the master?</h3><p>No reset. That is the point.</p></div>
+      <div class="qa"><h3>Same password for both?</h3><p>Not allowed. Setup blocks it.</p></div>
+      <div class="qa"><h3>Does it sync?</h3><p>No. Export, then import on the other device.</p></div>
+      <div class="qa"><h3>Where does the data sit?</h3><p><code>chrome.storage.local</code>, encrypted.</p></div>
+      <div class="qa"><h3>Clear browsing data?</h3><p>Doesn't touch it. Safe.</p></div>
+      <div class="qa"><h3>Skip the admin vault?</h3><p>Sure. It's optional at setup.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <div class="foot-brand">
+      <img src="logo-full.png" alt="KeyNest" height="44">
+    </div>
+    <div class="foot-links">
+      <a href="https://github.com/">GitHub</a>
+      <a href="#dual">Two vaults</a>
+      <a href="#install">Install</a>
+      <a href="#get">Download</a>
+    </div>
+  </div>
+  <div class="wrap foot-fine">
+    <p class="contact">
+      Run into a bug or have a question? Write to
+      <a href="mailto:adarsh.clarity@gmail.com">adarsh.clarity@gmail.com</a>.
+    </p>
+    <p class="fine-line">Built for personal use and for teams. Any manager who wants to share a password with someone without giving it away outright can use it. Open source.</p>
+  </div>
+</footer>
+
+</main>
+
+</body>
+</html>
